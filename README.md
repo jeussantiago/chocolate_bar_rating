@@ -42,41 +42,45 @@ The Data cleaning code with some description of a step by step cleaning process 
 # Model in its Current State
 (The code for the following sections will be located in the "Feature Engineering.ipynb" jupyter notebook file until noted.)<br>
 Without changing anything, I received an R^2 of 0.846 and an adj. R^2 of 0.845 through the OLS method.
-<picture of baseline stats>
+![UNADJUSTEDNONRAW_thumb_68](https://user-images.githubusercontent.com/45129935/56487316-c4c46780-64a8-11e9-89ec-15eaebf6a592.jpg)
+
   
 ## Multicollinearity
-<heatmap picture>
+![Image 4-22-19 at 1 00 AM](https://user-images.githubusercontent.com/45129935/56487348-e887ad80-64a8-11e9-9337-3d400d6edf2b.jpg)
 
 The variables flavor and quality are the only variables that have high correlational value. This indicates a possible multicollinearity. However, both flavor and quality are both also highly correlated with the target variable, rating. Thus, I will keep both variables.
 
 ## Interactions
 Variables like flavor and aroma were found to have the most influence. Thus, they were split into their own respective categories to check for interactions between other variables such as aroma and structure, aroma and CQ, and aroma and mouthfeel.<br>
-<aroma and mouthfeel interaction picture>
-When the aroma score is low, having a balanced mouthfeel score produces the highest ratings however, after around an aroma score of 35, the rating is strongly affected by an aroma score with a high moutfeel score.
-<aroma and CQ>
+![Image 4-22-19 at 1 01 AM](https://user-images.githubusercontent.com/45129935/56487366-f3dad900-64a8-11e9-95f8-25bbc351f51b.jpg) <br>
+When the aroma score is low, having a balanced mouthfeel score produces the highest ratings however, after around an aroma 
+![Image 4-22-19 at 1 01 AM (1)](https://user-images.githubusercontent.com/45129935/56487369-f63d3300-64a8-11e9-8e61-2da5310c32ba.jpg) <br>
 The lines look additive, there is no interaction here. <br>
-<aroma and structure>
+![Image 4-22-19 at 1 02 AM](https://user-images.githubusercontent.com/45129935/56487371-f89f8d00-64a8-11e9-9689-3e2120046f73.jpg) <br>
 It migth be slight, but there is an interaction here. The lines are not additive and we can say that the rating score is more affected by a structure score with a high aroma score.<br>
   
 Thus, I decided to included the two interactions above along with two others: flavor/length and flavor/complexity as they both showed an interaction.
 
 ## Normality
-<Residual plotting map>
+![Image 4-22-19 at 2 06 AM](https://user-images.githubusercontent.com/45129935/56487459-4caa7180-64a9-11e9-9a28-cce64ae1510c.jpg) <br>
 Here we try to find the variables that are heteroscedastic. We see that many variables are heteroscedastic which would violate our assumptions for a linear regression. Thus we employ transforming features such as the log function in order to achieve homoscesdasticity. <br>
   
-Our model after all the addition of interactions and variable transformation looks like this now, with an OLS R^2 of 0.872.
-<picture of OLS final model in Feature Engineering ipynb>
+Our model after all the addition of interactions and variable transformation looks like this now, with an OLS R^2 of 0.872.<br>
+![Image 4-22-19 at 2 08 AM](https://user-images.githubusercontent.com/45129935/56487460-4ddb9e80-64a9-11e9-963b-94e8e2ae6329.jpg)
+
   
 # Final Model
 (The code for this last portion can be found in the "cocoa_pred.ipynb" jupyter notebook.)
-Finally, to get to our last model, we drop all the values with a p-value less than 0.05. The final model has an R^2 of 0.881.
-<last OLS model in "cocoa_pred.ipynb>
+Finally, to get to our last model, we drop all the values with a p-value less than 0.05. The final model has an R^2 of 0.881. <br>
+![Image 4-22-19 at 2 17 AM](https://user-images.githubusercontent.com/45129935/56487530-80859700-64a9-11e9-9f90-2276b4bc6d63.jpg)
 
 ## Seeing how it Performs
-The model performs as such that the mean squared error(MSE) is 0.157 and the root mena squared error(RMSE) is 0.397. This graph shows the predicted user rating given independent parameters, plotted against the actual ratings that the user gave to the chocolate bar.
-< red performance picture>
-Similarly, it performed in the same manner when tested on the test data with a mean squared error(MSE) is 0.157 and the root mena squared error(RMSE) is 0.397.
-<blue performanc picture>
+The model performs as such that the mean squared error(MSE) is 0.157 and the root mena squared error(RMSE) is 0.397. This graph shows the predicted user rating given independent parameters, plotted against the actual ratings that the user gave to the chocolate bar. <br>
+![Image 4-22-19 at 2 17 AM (1)](https://user-images.githubusercontent.com/45129935/56487539-8d09ef80-64a9-11e9-8865-74e16eb615e0.jpg) <br>
+
+Similarly, it performed in the same manner when tested on the test data with a mean squared error(MSE) is 0.157 and the root mena squared error(RMSE) is 0.397. <br>
+![Image 4-22-19 at 2 18 AM](https://user-images.githubusercontent.com/45129935/56487558-9c893880-64a9-11e9-96be-60444f5a371e.jpg)
+
   
 ## Interpretation
 - An increase of 1 score in CQ leads to a score increase of 0.0029 in rating.
