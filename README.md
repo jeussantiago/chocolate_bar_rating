@@ -53,7 +53,7 @@ The variables flavor and quality are the only variables that have high correlati
 ## Interactions
 Variables like flavor and aroma were found to have the most influence. Thus, they were split into their own respective categories to check for interactions between other variables such as aroma and structure, aroma and CQ, and aroma and mouthfeel.<br>
 ![Image 4-22-19 at 1 01 AM](https://user-images.githubusercontent.com/45129935/56487366-f3dad900-64a8-11e9-95f8-25bbc351f51b.jpg) <br>
-When the aroma score is low, having a balanced mouthfeel score produces the highest ratings however, after around an aroma 
+When the aroma score is low, having a balanced mouthfeel score produces the highest ratings however, after around an aroma <br>
 ![Image 4-22-19 at 1 01 AM (1)](https://user-images.githubusercontent.com/45129935/56487369-f63d3300-64a8-11e9-8e61-2da5310c32ba.jpg) <br>
 The lines look additive, there is no interaction here. <br>
 ![Image 4-22-19 at 1 02 AM](https://user-images.githubusercontent.com/45129935/56487371-f89f8d00-64a8-11e9-9689-3e2120046f73.jpg) <br>
